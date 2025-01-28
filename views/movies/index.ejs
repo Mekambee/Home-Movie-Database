@@ -1,0 +1,24 @@
+<h2>Lista Filmów</h2>
+<div class="movie-list">
+    <div class="movie-list-header">
+        <span>Tytuł</span>
+        <span>Reżyser</span>
+        <span>Rok</span>
+        <span>Akcje</span>
+    </div>
+
+    <% movies.forEach(movie => { %>
+        <div class="movie-item">
+            <span><strong><%= movie.title %></strong></span>
+            <span><%= movie.director %></span>
+            <span><%= movie.year %></span>
+            <span>
+                <a href="/movies/<%= movie._id %>" class="button button-green">Wyświetl opis</a>
+                <a href="/movies/edit/<%= movie._id %>" class="button button-yellow">Edytuj</a>
+                <form action="/movies/delete/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="button button-red">Usuń</button>
+                </form>
+            </span>
+        </div>
+    <% }) %>
+</div>

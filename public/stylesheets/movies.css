@@ -1,0 +1,208 @@
+.movie-list {
+    margin: 20px 0;
+}
+
+.movie-list-header {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+}
+
+.movie-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-top: 5px;
+    border-radius: 5px;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.movie-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.movie-item a {
+    margin-right: 10px;
+}
+
+.movie-item form {
+    display: inline;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    text-align: right;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.form-actions button:hover {
+    background-color: grey;
+}
+
+.movie-details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.movie-details h3 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.movie-details p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.movie-details .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.movie-details .button:hover {
+    background-color: grey;
+}
+
+.button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.button-green {
+    background-color: #28a745;
+}
+
+.button-green:hover {
+    background-color: #218838;
+}
+
+.button-yellow {
+    background-color: #ffc107;
+    color: black;
+}
+
+.button-yellow:hover {
+    background-color: #e0a800;
+}
+
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 992px) {
+    .movie-list-header,
+    .movie-item {
+        grid-template-columns: 2fr 1fr 1fr;
+        font-size: 0.9rem;
+    }
+
+    .form-container {
+        max-width: 500px;
+        padding: 15px;
+    }
+
+    .movie-details {
+        max-width: 500px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-list-header,
+    .movie-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .movie-item span {
+        margin-bottom: 10px;
+    }
+
+    .form-container {
+        max-width: 100%;
+        margin: 10px auto;
+    }
+
+    .movie-details {
+        max-width: 100%;
+        margin: 10px auto;
+    }
+
+    .movie-details h3 {
+        font-size: 1.5rem;
+    }
+}
+

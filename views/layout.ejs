@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domowa Baza Filmów</title>
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css">
+    <link rel="stylesheet" href="/stylesheets/movies.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+</head>
+<body>
+<header>
+    <div class="header-img">
+        <div class="header-text">
+            <h1>Domowa baza filmów</h1>
+        </div>
+        <div class="header-bg"></div>
+    </div>
+    <div class="nav">
+        <nav>
+            <button onclick="window.location.href='/movies'">Lista Filmów</button>
+            <button onclick="window.location.href='/movies/add'">Dodaj Film</button>
+        </nav>
+    </div>
+
+
+</header>
+<main>
+    <%- body %>
+</main>
+</body>
+</html>
