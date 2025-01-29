@@ -3,8 +3,12 @@ const router = express.Router();
 const Movie = require('../models/movie');
 
 router.get('/', async (req, res) => {
-    const movies = await Movie.find();
-    res.render('movies/index', { movies });
+    try {
+        const movies = await Movie.find();
+        res.render('movies/index', { movies });
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy pobieraniu filmów.');
+    }
 });
 
 router.get('/add', (req, res) => {
@@ -12,30 +16,62 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-    const { title, director, year, description } = req.body;
-    await Movie.create({ title, director, year, description });
-    res.redirect('/movies');
+    try {
+        const { title, director, year, description } = req.body;
+        await Movie.create({ title, director, year, description });
+        res.redirect('/movies');
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy dodawaniu filmu.');
+    }
 });
 
 router.get('/edit/:id', async (req, res) => {
-    const movie = await Movie.findById(req.params.id);
-    res.render('movies/edit', { movie });
+    try {
+        const movie = await Movie.findById(req.params.id);
+        if (!movie) {
+            return res.status(404).send('Film nie znaleziony');
+        }
+        res.render('movies/edit', { movie });
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy pobieraniu filmu do edycji.');
+    }
 });
 
 router.put('/edit/:id', async (req, res) => {
-    const { title, director, year, description } = req.body;
-    await Movie.findByIdAndUpdate(req.params.id, { title, director, year, description });
-    res.redirect('/movies');
+    try {
+        const { title, director, year, description } = req.body;
+        const movie = await Movie.findByIdAndUpdate(req.params.id, { title, director, year, description }, { new: true });
+        if (!movie) {
+            return res.status(404).send('Film nie znaleziony');
+        }
+        res.redirect('/movies');
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy aktualizacji filmu.');
+    }
 });
 
 router.delete('/delete/:id', async (req, res) => {
-    await Movie.findByIdAndDelete(req.params.id);
-    res.redirect('/movies');
+    try {
+        const movie = await Movie.findByIdAndDelete(req.params.id);
+        if (!movie) {
+            return res.status(404).send('Film nie znaleziony');
+        }
+        res.redirect('/movies');
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy usuwaniu filmu.');
+    }
 });
 
 router.get('/:id', async (req, res) => {
-    const movie = await Movie.findById(req.params.id); // Znajdź film w bazie danych
-    res.render('movies/show', { movie });
+    try {
+        const movie = await Movie.findById(req.params.id);
+        if (!movie) {
+            return res.status(404).send('Film nie znaleziony');
+        }
+        res.render('movies/show', { movie });
+    } catch (error) {
+        res.status(500).send('Błąd serwera przy pobieraniu szczegółów filmu.');
+    }
 });
 
 module.exports = router;
